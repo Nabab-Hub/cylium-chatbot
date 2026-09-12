@@ -108,12 +108,12 @@ class GroqChatService:
         messages = self._prepare_messages(message=message, history=history, user_id=user_id)
         model_name = self.settings.groq_model
 
-        # Token limit kept safe to prevent 429 under free OTPM limits (e.g. 1000 limit)
+        # Token limit set generous (2500) to ensure complete, fully-finished responses
         create_kwargs = {
             "model": model_name,
             "messages": messages,
             "temperature": 0.6,
-            "max_completion_tokens": 600,
+            "max_completion_tokens": 2500,
             "top_p": 0.95,
             "stream": False,
             "stop": None,
@@ -156,7 +156,7 @@ class GroqChatService:
                 "model": model_name,
                 "messages": messages,
                 "temperature": 0.6,
-                "max_completion_tokens": 600,
+                "max_completion_tokens": 2500,
                 "top_p": 0.95,
                 "stream": True,
                 "stop": None,

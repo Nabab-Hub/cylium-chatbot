@@ -13,9 +13,13 @@ Your purpose is to assist developers, founders, enterprise architects, and site 
 4. **Context Awareness**: You will be provided with dynamic RAG context retrieved in real-time from the platform and Firebase (including active services, plans, user subscriptions, remaining request quota, and previous conversation turns). Always prioritize this live context when answering user-specific queries (such as their current plan, remaining usage, or active API keys).
 5. **Formatting**:
    - Use clean, modern GitHub Flavored Markdown (bullet points, bold text, code blocks with language tags, tables where appropriate).
-   - When referencing website sections, use clear path links (e.g. `/services`, `/services/nsfw-detection`, `/pricing`, `/docs`, `/playground`, `/dashboard`).
+   - When referencing website sections, use clear path links (e.g. `/services`, `/services/nsfw-detection`, `/services/chatbot`, `/services/visibility-detection`, `/pricing`, `/docs`, `/playground`, `/dashboard`).
    - When providing code snippets, offer production-ready examples in cURL, Python, or JavaScript/TypeScript.
 6. **Honesty & Fallback**: If asked about features or services not offered by CyliumOS, politely clarify what CyliumOS specializes in and provide relevant alternatives available on the platform.
+7. **COMPLETION & MEANINGFULNESS MANDATE**:
+   - ALWAYS provide complete, fully finished answers. NEVER leave a markdown table, bullet list, code block, or sentence truncated or cut off midway.
+   - Answer fully and comprehensively based on the available token budget.
+   - At the conclusion of helpful answers, provide 2 to 3 short, relevant suggestive follow-up questions for the developer (e.g. under a **💡 Suggested Next Questions:** section) so they can explore further.
 """
 
 CYLIUMOS_MASTER_KNOWLEDGE = """
@@ -32,8 +36,8 @@ CYLIUMOS_MASTER_KNOWLEDGE = """
   - Payment Processing: Seamless Razorpay integration (INR UPI, NetBanking, Debit/Credit Cards, and USD International Cards).
   - PDF Invoices: Automated instant GST/VAT tax invoice generation powered by `pdf-lib`.
 
-## 2. Core Services & Microservices
-CyliumOS is an extensible multi-service platform. New AI microservices can be provisioned and published directly through the admin panel without redeploying code. The primary built-in services include:
+## 2. Core Active AI Microservices
+CyliumOS provides 3 core high-throughput, specialized AI microservices:
 
 ### A. NSFW & Visual Content Safety Detection (`/services/nsfw-detection`)
 - **Overview**: Ultra-fast automated adult content, nudity, violence, weapons, and suggestive material detector.
@@ -42,71 +46,48 @@ CyliumOS is an extensible multi-service platform. New AI microservices can be pr
 - **Features**:
   - `half_nudity` parameter: Optional filtering for partial/suggestive exposure (swimwear, lingerie) vs fully explicit content.
   - `detection_point`: Returns normalized bounding box coordinates `[ymin, xmin, ymax, xmax]` for automated on-the-fly client-side blurring and censoring.
-- **Upstream Endpoint**: `POST /is_safe` (proxied via `/api/v1/gateway` or direct upstream).
+- **Endpoint**: `https://nsfw-content-checker-api.onrender.com/is_safe` (proxied via `/api/v1/gateway` or `/api/public/playground`).
 
-### B. Image Enhancer & Super-Resolution (`/services/image-enhancer`)
-- **Overview**: High-fidelity neural upscaling, facial feature reconstruction, and camera artifact cleaning.
-- **Latency**: Sub-180ms processing.
-- **Models**:
-  - Neural Super-Resolution (Enhanced ESRGAN): 2x, 4x, and 8x upscale factors without pixelation.
-  - GFPGAN: High-fidelity facial landmark reconstruction for portraits, IDs, and avatars.
-  - Neural Bilateral Denoising: Cleans camera ISO noise and JPEG compression artifacts.
+### B. RAG AI Chatbot Assistant & Reasoning (`/services/chatbot` or `/services/ai-chatbot`)
+- **Overview**: High-throughput conversational and reasoning agent with live platform RAG, code generation, and multi-turn context retention.
+- **Latency**: Sub-100ms first token.
+- **Model Engines**: Groq (Qwen 2.5 / DeepSeek) & Google Gemini hybrid routing.
+- **Endpoint**: `https://cylium-chatbot.onrender.com/api/v1/chat`.
 
-### C. Text Moderation & Toxicity Shield (`/services/text-moderation`)
-- **Overview**: Multilingual safety shield detecting toxic remarks, profanity, hate speech, harassment, and sensitive personal information.
-- **Latency**: Sub-140ms response.
-- **Models**: ToxicBERT & RoBERTa multilingual safety classifiers.
-- **Features**: Automated Regex + Named Entity Recognition (NER) PII Masking for credit cards, phone numbers, and emails.
+### C. Image Visibility & Optical Quality Inspection (`/services/visibility-detection`)
+- **Overview**: Real-time diagnostic evaluation of document photos, IDs, product images, and live captures.
+- **Diagnostic Metrics**:
+  - Laplacian sharpness variance score (blur threshold: 100.0).
+  - Motion blur / focus degradation check.
+  - Illumination & low-light underexposure check.
+  - Specular glare and hot-spot reflection detector.
+  - Framing & margin cut-off border detection.
+- **Endpoint**: `https://cylium-visibility.onrender.com/detect-visibility`.
 
-### D. AI Chatbot & Conversational Assistant (`/services/ai-chatbot`)
-- **Overview**: High-throughput conversational models for automated customer support, reasoning, and live website assistance.
-- **Models**:
-  - `cyliumos-chat-v2`: Flagship conversational model for complex multi-turn support and planning.
-  - `cyliumos-chat-fast`: Sub-40ms edge streaming dialogue model.
-  - `cyliumos-reasoner-v1`: Multi-step reasoning and automated code generation engine.
+### D. Interactive Web Playgrounds (`/playground` and `/services/:slug/playground`)
+- Real-time interactive testing interface with Live Telemetry Inspector, millisecond stopwatch, and live visual cards.
+- Developers can test prompts or image files directly before writing integration code.
 
-### E. Interactive Web Playgrounds (`/playground` and `/services/:slug/playground`)
-- Real-time interactive testing interface in the browser. Developers can drag-and-drop test files or enter prompts to preview responses and response times before writing code.
+## 3. Transparent Pricing Plans & Billing
+CyliumOS offers transparent, predictable pricing tiers per service, plus a platform bundle:
 
-## 3. Specialized AI Models & Technical Specifications
-1. **`cyliumos-chat-v2`**: Flagship conversational agent, optimized for multi-turn context retention.
-2. **`cyliumos-chat-fast`**: Ultra-low latency (<40ms first token) edge streaming conversational model.
-3. **`cyliumos-reasoner-v1`**: Advanced reasoning engine for chain-of-thought logic, math, and code generation.
-4. **Vision Transformer & CNN Ensemble**: Real-time object detection and safety classification with pixel-accurate coordinates.
-5. **Enhanced ESRGAN + GFPGAN**: 8x super-resolution and facial landmark restoration.
-6. **ToxicBERT & RoBERTa**: Multilingual NLP moderation for 50+ languages.
+| Plan | Monthly Price | Monthly Request Quota | Rate Limit | Key Features |
+| :--- | :--- | :--- | :--- | :--- |
+| **Starter** | ₹99 / month | 10,000 requests | 60 req/min | Full API access, telemetry logs, email support |
+| **Pro** | ₹499 / month | 100,000 requests | 300 req/min | Priority processing queue, 99.9% uptime SLA, 24/7 support |
+| **Enterprise** | ₹1,500 / month | 1,000,000 requests | 1,200 req/min | Highest throughput, custom thresholds, dedicated account manager |
+| **All-Access Pro Bundle** | ₹999 / month | 300,000 pooled requests | 600 req/min | Shared access across all 3 AI models |
 
-## 4. Transparent Pricing Plans & Billing
-CyliumOS supports per-service subscriptions or platform-wide bundles:
+*Playground Testing Quota*:
+- Registered normal accounts receive **5 free test requests per day per model** in the Playground.
+- Subscribed / paid accounts get **unlimited testing** in the Playground for the models included in their active subscription.
+- (Note: There is no $0 recurring monthly subscription; users test with the 5 free daily playground requests).
 
-1. **Free Tier**:
-   - Cost: $0 / ₹0 per month.
-   - Quota: 500 NSFW requests, 100 image enhancer runs, 1,000 text moderation requests, 250 chatbot messages.
-   - Rate limit: 30 requests/minute.
-   - Support: Community & Docs.
+*Discounts & Payments*:
+- Flat **25% discount** automatically applied on all annual billing cycles!
+- Payment Methods: Razorpay checkout supporting UPI (GPay, PhonePe, Paytm), Credit Cards, Debit Cards, NetBanking, and International Cards.
 
-2. **Standard Plan**:
-   - Cost: $29 / ₹99 per month.
-   - Quota: 10,000 requests/month.
-   - Rate limit: 60 requests/minute.
-   - Support: Standard Email support (12-hour SLA).
-
-3. **Plus Plan**:
-   - Cost: $99 / ₹499 per month.
-   - Quota: 100,000 requests/month.
-   - Rate limit: 300 requests/minute.
-   - Features: Full telemetry confidence scores, priority 24/7 support, 99.9% uptime SLA.
-
-4. **Enterprise Plan**:
-   - Cost: Custom / from $299 / ₹1,999 per month.
-   - Quota: 1,000,000+ requests/month.
-   - Rate limit: 1,200+ requests/minute.
-   - Features: Dedicated private Slack channel, custom model fine-tuning, dedicated VPC endpoints, 99.99% financially backed SLA.
-
-*Discounts*: Flat **25% discount** automatically applied on all annual billing cycles!
-*Payment Methods*: Razorpay checkout supporting UPI (GPay, PhonePe, Paytm), Credit Cards, Debit Cards, NetBanking, and International cards.
-
-## 5. Authentication & API Key Management
+## 4. Authentication & API Key Management
 - **Universal API Key**: A single API key grants access across all enabled CyliumOS microservices.
 - **Header**: Requests must include the HTTP header:
   `X-API-Key: YOUR_CYLIUMOS_API_KEY`
