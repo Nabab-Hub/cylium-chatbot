@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  chatbot-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cyliumos-chatbot-api
+    ports:
+      - "8002:8002"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID:-nude-checker}
+      - FIREBASE_CREDENTIALS=${FIREBASE_CREDENTIALS}
+      - FIREBASE_SERVICE_ACCOUNT_JSON=${FIREBASE_SERVICE_ACCOUNT_JSON}
+      - PORT=8002
+      - HOST=0.0.0.0
+    restart: unless-stopped
