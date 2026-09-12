@@ -46,13 +46,13 @@ CyliumOS provides 3 core high-throughput, specialized AI microservices:
 - **Features**:
   - `half_nudity` parameter: Optional filtering for partial/suggestive exposure (swimwear, lingerie) vs fully explicit content.
   - `detection_point`: Returns normalized bounding box coordinates `[ymin, xmin, ymax, xmax]` for automated on-the-fly client-side blurring and censoring.
-- **Endpoint**: `https://nsfw-content-checker-api.onrender.com/is_safe` (proxied via `/api/v1/gateway` or `/api/public/playground`).
+- **Endpoint**: `https://nsfw.cyliumos.online/is_safe` (proxied via `/api/v1/gateway` or `/api/public/playground`).
 
 ### B. RAG AI Chatbot Assistant & Reasoning (`/services/chatbot` or `/services/ai-chatbot`)
 - **Overview**: High-throughput conversational and reasoning agent with live platform RAG, code generation, and multi-turn context retention.
 - **Latency**: Sub-100ms first token.
 - **Model Engines**: Groq (Qwen 2.5 / DeepSeek) & Google Gemini hybrid routing.
-- **Endpoint**: `https://cylium-chatbot.onrender.com/api/v1/chat`.
+- **Endpoint**: `https://cbts.cyliumos.online/api/v1/chat`.
 
 ### C. Image Visibility & Optical Quality Inspection (`/services/visibility-detection`)
 - **Overview**: Real-time diagnostic evaluation of document photos, IDs, product images, and live captures.
@@ -62,7 +62,7 @@ CyliumOS provides 3 core high-throughput, specialized AI microservices:
   - Illumination & low-light underexposure check.
   - Specular glare and hot-spot reflection detector.
   - Framing & margin cut-off border detection.
-- **Endpoint**: `https://cylium-visibility.onrender.com/detect-visibility`.
+- **Endpoint**: `https://vgdt.cyliumos.online/detect-visibility`.
 
 ### D. Interactive Web Playgrounds (`/playground` and `/services/:slug/playground`)
 - Real-time interactive testing interface with Live Telemetry Inspector, millisecond stopwatch, and live visual cards.
