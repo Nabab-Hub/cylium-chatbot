@@ -44,11 +44,15 @@ def init_firebase() -> Optional[firestore.Client]:
     candidate_paths = [
         settings.firebase_credentials,
         os.getenv("FIREBASE_CREDENTIALS"),
+        "cyliumos-firebase-adminsdk.json",
+        os.path.join(os.path.dirname(__file__), "..", "..", "cyliumos-firebase-adminsdk.json"),
+        os.path.join(os.getcwd(), "cyliumos-firebase-adminsdk.json"),
         "/etc/secrets/firebase-service-account.json",
         "firebase-service-account.json",
         "nude-checker-firebase-adminsdk.json",
         os.path.join(os.getcwd(), "firebase-service-account.json"),
         os.path.join(os.getcwd(), "..", "..", "firebase-service-account.json"),
+        os.path.join(os.getcwd(), "..", "..", "cyliumos-firebase-adminsdk.json"),
     ]
 
     for path in candidate_paths:

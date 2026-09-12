@@ -28,8 +28,8 @@ class Settings(BaseSettings):
     gemini_model: str = Field(default="gemini-2.5-flash", alias="GEMINI_MODEL")
 
     # Firebase Configuration
-    firebase_project_id: str = Field(default="nude-checker", alias="FIREBASE_PROJECT_ID")
-    firebase_credentials: Optional[str] = Field(default=None, alias="FIREBASE_CREDENTIALS")
+    firebase_project_id: str = Field(default="cyliumos", alias="FIREBASE_PROJECT_ID")
+    firebase_credentials: Optional[str] = Field(default="cyliumos-firebase-adminsdk.json", alias="FIREBASE_CREDENTIALS")
     firebase_service_account_json: Optional[str] = Field(
         default=None, alias="FIREBASE_SERVICE_ACCOUNT_JSON"
     )
