@@ -116,7 +116,7 @@ CyliumOS offers transparent, predictable pricing tiers per service, plus a platf
 ### cURL
 ```bash
 curl -X POST "https://api.cyliumos.com/api/v1/gateway" \\
-  -H "X-API-Key: cyl_live_your_key_here" \\
+  -H "X-API-Key: cyk_live_your_key_here" \\
   -H "Content-Type: application/json" \\
   -d '{"service": "nsfw-detection", "image_url": "https://example.com/photo.jpg"}'
 ```
@@ -127,7 +127,7 @@ import requests
 
 url = "https://api.cyliumos.com/api/v1/gateway"
 headers = {
-    "X-API-Key": "cyl_live_your_key_here",
+    "X-API-Key": "cyk_live_your_key_here",
     "Content-Type": "application/json"
 }
 payload = {
@@ -148,7 +148,7 @@ const { data } = await axios.post('https://api.cyliumos.com/api/v1/gateway', {
   image_url: 'https://example.com/photo.jpg'
 }, {
   headers: {
-    'X-API-Key': 'cyl_live_your_key_here',
+    'X-API-Key': 'cyk_live_your_key_here',
     'Content-Type': 'application/json'
   }
 });

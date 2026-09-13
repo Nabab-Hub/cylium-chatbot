@@ -172,7 +172,7 @@ class GeminiChatService:
                 "import requests\n\n"
                 "response = requests.post(\n"
                 "    'https://api.cyliumos.com/api/v1/gateway',\n"
-                "    headers={'X-API-Key': 'cyl_live_your_key_here'},\n"
+                "    headers={'X-API-Key': 'cyk_live_your_key_here'},\n"
                 "    json={'service': 'nsfw-detection', 'image_url': 'https://example.com/test.jpg'}\n"
                 ")\n"
                 "print(response.json())\n"
