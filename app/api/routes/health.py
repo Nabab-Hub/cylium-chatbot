@@ -44,9 +44,9 @@ async def service_info():
     settings = get_settings()
     return {
         "service": "CyliumOS AI Chatbot API",
-        "description": "FastAPI service powered by Groq / Gemini with real-time Firebase RAG integration.",
-        "llm_provider": settings.llm_provider,
-        "model": settings.active_model_name,
+        "description": "Cylium 3.0 conversational AI service with real-time Firebase RAG integration.",
+        "llm_provider": "Cylium Engine",
+        "model": "cylium-3.0",
         "docs_url": "/docs",
         "openapi_url": "/openapi.json",
         "health_url": "/health",

@@ -51,7 +51,7 @@ CyliumOS provides 3 core high-throughput, specialized AI microservices:
 ### B. RAG AI Chatbot Assistant & Reasoning (`/services/chatbot` or `/services/ai-chatbot`)
 - **Overview**: High-throughput conversational and reasoning agent with live platform RAG, code generation, and multi-turn context retention.
 - **Latency**: Sub-100ms first token.
-- **Model Engines**: Groq (Qwen 2.5 / DeepSeek) & Google Gemini hybrid routing.
+- **Model Engine**: Cylium 3.0 AI Engine with high-throughput neural inference.
 - **Endpoint**: `https://cbts.cyliumos.online/api/v1/chat`.
 
 ### C. Image Visibility & Optical Quality Inspection (`/services/visibility-detection`)

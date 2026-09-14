@@ -1,6 +1,6 @@
-# 🤖 CyliumOS RAG Chatbot API (Groq & Gemini)
+# 🤖 CyliumOS RAG Chatbot API
 
-An enterprise-grade, high-throughput conversational AI chatbot microservice built with **FastAPI**, **Groq** (`qwen/qwen3.6-27b`), **Google Gemini** (`google-genai` SDK), and real-time **Firebase Firestore** for dynamic RAG (Retrieval-Augmented Generation) and hybrid session persistence.
+An enterprise-grade, high-throughput conversational AI chatbot microservice powered by the **Cylium 3.0 Engine** and real-time **Firebase Firestore** for dynamic RAG (Retrieval-Augmented Generation) and hybrid session persistence.
 
 The chatbot provides authoritative, accurate answers about the entire **CyliumOS (SAS)** ecosystem: services, deep learning vision models, transparent pricing plans, universal API keys, billing, policies, and code integrations.
 
@@ -8,10 +8,9 @@ The chatbot provides authoritative, accurate answers about the entire **CyliumOS
 
 ## 🌟 Key Features
 
-1. **Dual LLM Provider Support**:
-   - **Groq Engine**: Ultra-low-latency text generation via `qwen/qwen3.6-27b` (ideal for instantaneous real-time streaming).
-   - **Google Gemini Engine**: Powered by `gemini-2.5-flash` or `gemini-3.7-flash` via official `google-genai` SDK.
-   - Switch seamlessly using the `LLM_PROVIDER` environment variable (`groq` or `gemini`).
+1. **Cylium 3.0 Engine Support**:
+   - High-throughput, ultra-low-latency neural text generation (ideal for instantaneous real-time streaming).
+   - Sub-100ms first token response with enterprise-grade SLA.
 
 2. **Dynamic RAG (Retrieval Augmented Generation)**:
    - Synchronizes live platform state from Cloud Firestore (`services` and `plans` collections).
