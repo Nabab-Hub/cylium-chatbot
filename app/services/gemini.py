@@ -134,7 +134,7 @@ class GeminiChatService:
                 "  - 100,000 requests/month, 300 req/min, telemetry confidence scores, 24/7 priority support, 99.9% uptime SLA.\n\n"
                 "• **Enterprise Plan ($299+ / ₹1,999+ per month)**:\n"
                 "  - 1,000,000+ requests/month, 1,200+ req/min, dedicated Slack channel, custom model fine-tuning, 99.99% financial SLA.\n\n"
-                "💡 **Special Offer**: Enjoy a flat **25% discount** on all annual billing cycles! Payments are securely processed via Razorpay (UPI, Cards, NetBanking)."
+                "💡 **Special Offer**: Enjoy a flat **10% discount** on all annual billing cycles! Payments are securely processed via Razorpay (UPI, Cards, NetBanking)."
             )
 
         # 3. AI Models & Architecture
@@ -212,7 +212,7 @@ class GeminiChatService:
             "• **Core Microservices**: NSFW Content Detection, Image Super-Resolution Enhancer, Text Moderation & PII Masking, and Conversational Chatbots.\n"
             "• **Developer Infrastructure**: Universal API Keys (`X-API-Key`), sub-100ms global latency, and interactive web playgrounds.\n"
             "• **Zero-Retention Privacy**: Ephemeral in-memory execution with zero data stored to disk and no model training on customer data.\n"
-            "• **Transparent Pricing**: Generous Free Tier ($0/mo), Standard ($29/₹99), Plus ($99/₹499), and Enterprise plans with 25% annual discounts.\n\n"
+            "• **Transparent Pricing**: Generous Free Tier ($0/mo), Standard ($29/₹99), Plus ($99/₹499), and Enterprise plans with 10% annual discounts.\n\n"
             "How can I assist you with CyliumOS today?"
         )
 

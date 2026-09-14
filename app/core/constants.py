@@ -84,7 +84,7 @@ CyliumOS offers transparent, predictable pricing tiers per service, plus a platf
 - (Note: There is no $0 recurring monthly subscription; users test with the 5 free daily playground requests).
 
 *Discounts & Payments*:
-- Flat **25% discount** automatically applied on all annual billing cycles!
+- Flat **10% discount** automatically applied on all annual billing cycles!
 - Payment Methods: Razorpay checkout supporting UPI (GPay, PhonePe, Paytm), Credit Cards, Debit Cards, NetBanking, and International Cards.
 
 ## 4. Authentication & API Key Management

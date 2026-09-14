@@ -20,13 +20,12 @@ wheels/
 *.egg
 MANIFEST
 
-.env
-.env.local
 *.log
 venv/
 .venv/
 env/
 .idea/
-.vscode/
 *firebase-adminsdk*.json
 *service-account*.json
+config.bat
+node_modules
